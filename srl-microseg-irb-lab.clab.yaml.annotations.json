@@ -1,0 +1,539 @@
+{
+  "freeTextAnnotations": [
+    {
+      "id": "freeText_1774330479134",
+      "text": "192.168.1.1/24",
+      "position": {
+        "x": 108.85957768218677,
+        "y": 155.2504334237325
+      },
+      "fontSize": 14,
+      "fontColor": "#ffffff",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1774330493982",
+      "text": "192.168.1.2/24",
+      "position": {
+        "x": 107.59159569776676,
+        "y": 291.96913244294876
+      },
+      "fontSize": 14,
+      "fontColor": "#ffffff",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1774330505862",
+      "text": "192.168.1.3/24",
+      "position": {
+        "x": 750.2105296988988,
+        "y": 154.13702921837125
+      },
+      "fontSize": 14,
+      "fontColor": "#ffffff",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1774330518298",
+      "text": "192.168.1.4/24",
+      "position": {
+        "x": 750.2105296988987,
+        "y": 292.06723677081743
+      },
+      "fontSize": 14,
+      "fontColor": "#ffffff",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1774330584110",
+      "text": "Micro-Segmentation With IRB",
+      "position": {
+        "x": 254.9096695085729,
+        "y": 172.25789120919856
+      },
+      "fontSize": 30,
+      "fontColor": "#ffffff",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "center",
+      "fontFamily": "Arial",
+      "width": 441,
+      "height": 116
+    },
+    {
+      "id": "freeText_1774330611798",
+      "text": "Clients distributed across two separate bridge domains contained in the same IP VRF. Clients are members of blue or red micro-segmentation groups",
+      "position": {
+        "x": 271.17344202786114,
+        "y": 442.0485900759744
+      },
+      "fontSize": 16,
+      "fontColor": "#ffbb00",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "center",
+      "fontFamily": "Arial",
+      "width": 419,
+      "height": 114
+    },
+    {
+      "id": "freeText_1774331151184",
+      "text": "EVPN-VXLAN",
+      "position": {
+        "x": 416.0982102024465,
+        "y": 332.82362467855626
+      },
+      "fontSize": 16,
+      "fontColor": "#e1ff00",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "center",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1774412615389",
+      "text": "192.168.2.1/24",
+      "position": {
+        "x": 106.74509433111311,
+        "y": 511.157477762806
+      },
+      "fontSize": 14,
+      "fontColor": "#ffffff",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1774412634805",
+      "text": "192.168.2.2/24",
+      "position": {
+        "x": 108.99029401149056,
+        "y": 629.4753796616458
+      },
+      "fontSize": 14,
+      "fontColor": "#ffffff",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1774412646264",
+      "text": "192.168.2.3/24",
+      "position": {
+        "x": 750.2390808271949,
+        "y": 512.0987110744544
+      },
+      "fontSize": 14,
+      "fontColor": "#ffffff",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1774412657800",
+      "text": "192.168.2.4/24",
+      "position": {
+        "x": 744.4312980558153,
+        "y": 634.9392658497145
+      },
+      "fontSize": 14,
+      "fontColor": "#ffffff",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1774413112141",
+      "text": "Subnet 2  \n192.168.2.0/24",
+      "position": {
+        "x": 419.2919526309383,
+        "y": 566.7189554542379
+      },
+      "fontSize": 16,
+      "fontColor": "#ed2df0",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "center",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1774413173784",
+      "text": "Subnet 1  \n192.168.1.0/24",
+      "position": {
+        "x": 424.79445192015436,
+        "y": 89.20189705118304
+      },
+      "fontSize": 16,
+      "fontColor": "#2df0ed",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "center",
+      "fontFamily": "Arial"
+    }
+  ],
+  "freeShapeAnnotations": [
+    {
+      "id": "freeShape_1774330239411",
+      "shapeType": "rectangle",
+      "position": {
+        "x": 119.38646693136616,
+        "y": 85.378728554291
+      },
+      "width": 80,
+      "height": 85,
+      "fillColor": "#0008ff",
+      "fillOpacity": 0.4,
+      "borderColor": "#ffffff",
+      "borderWidth": 1,
+      "borderStyle": "solid",
+      "rotation": 0,
+      "zIndex": -1
+    },
+    {
+      "id": "freeShape_1774330323448",
+      "shapeType": "rectangle",
+      "position": {
+        "x": 119.7267129759797,
+        "y": 225.1843526946958
+      },
+      "width": 79,
+      "height": 83,
+      "fillColor": "#ff0000",
+      "fillOpacity": 0.4,
+      "borderColor": "#ffffff",
+      "borderWidth": 1,
+      "borderStyle": "solid",
+      "rotation": 0,
+      "zIndex": -1
+    },
+    {
+      "id": "freeShape_1774330410241",
+      "shapeType": "rectangle",
+      "position": {
+        "x": 761.3186296192164,
+        "y": 226.50386060546873
+      },
+      "width": 79,
+      "height": 84,
+      "fillColor": "#ff0000",
+      "fillOpacity": 0.4,
+      "borderColor": "#ffffff",
+      "borderWidth": 1,
+      "borderStyle": "solid",
+      "rotation": 0,
+      "zIndex": -1
+    },
+    {
+      "id": "freeShape_1774330433399",
+      "shapeType": "rectangle",
+      "position": {
+        "x": 761.9783835746027,
+        "y": 87.95552997431486
+      },
+      "width": 77,
+      "height": 83,
+      "fillColor": "#0008ff",
+      "fillOpacity": 0.4,
+      "borderColor": "#ffffff",
+      "borderWidth": 1,
+      "borderStyle": "solid",
+      "rotation": 0,
+      "zIndex": -1
+    },
+    {
+      "id": "freeShape_1774331000585",
+      "shapeType": "line",
+      "position": {
+        "x": 402.7026609472436,
+        "y": 379.29081384952883
+      },
+      "endPosition": {
+        "x": 535.9685668669792,
+        "y": 378.2735748497656
+      },
+      "fillColor": "#0008ff",
+      "fillOpacity": 0.4,
+      "borderColor": "#e1ff00",
+      "borderWidth": 5,
+      "borderStyle": "dashed",
+      "rotation": 0,
+      "lineStartArrow": true,
+      "lineEndArrow": true,
+      "lineArrowSize": 3,
+      "zIndex": -1
+    },
+    {
+      "id": "freeShape_1774412455907",
+      "shapeType": "rectangle",
+      "position": {
+        "x": 64.09576212067248,
+        "y": 434.07630939268654
+      },
+      "width": 188,
+      "height": 253,
+      "fillColor": "#ffffff",
+      "fillOpacity": 0,
+      "borderColor": "#ed2df0",
+      "borderWidth": 2,
+      "borderStyle": "dashed",
+      "rotation": 0,
+      "zIndex": -1
+    },
+    {
+      "id": "freeShape_1774412491742",
+      "shapeType": "rectangle",
+      "position": {
+        "x": 703.4463554769474,
+        "y": 56.73641183596297
+      },
+      "width": 197,
+      "height": 295,
+      "fillColor": "#ffffff",
+      "fillOpacity": 0,
+      "borderColor": "#2df0ed",
+      "borderWidth": 2,
+      "borderStyle": "dashed",
+      "rotation": 0,
+      "zIndex": -1
+    },
+    {
+      "id": "freeShape_1774412579841",
+      "shapeType": "rectangle",
+      "position": {
+        "x": 704.7173701330178,
+        "y": 434.22746960592895
+      },
+      "width": 197,
+      "height": 258,
+      "fillColor": "#ffffff",
+      "fillOpacity": 0,
+      "borderColor": "#ed2df0",
+      "borderWidth": 2,
+      "borderStyle": "dashed",
+      "rotation": 0,
+      "zIndex": -1
+    },
+    {
+      "id": "freeShape_1774412717769",
+      "shapeType": "rectangle",
+      "position": {
+        "x": 119.04965334436864,
+        "y": 448.7406371542335
+      },
+      "width": 80,
+      "height": 77,
+      "fillColor": "#0008ff",
+      "fillOpacity": 0.4,
+      "borderColor": "#ffffff",
+      "borderWidth": 1,
+      "borderStyle": "solid",
+      "rotation": 0,
+      "zIndex": -1
+    },
+    {
+      "id": "freeShape_1774412797533",
+      "shapeType": "rectangle",
+      "position": {
+        "x": 757.413099638278,
+        "y": 446.95932072531946
+      },
+      "width": 83,
+      "height": 79,
+      "fillColor": "#0008ff",
+      "fillOpacity": 0.4,
+      "borderColor": "#ffffff",
+      "borderWidth": 1,
+      "borderStyle": "solid",
+      "rotation": 0,
+      "zIndex": -1
+    },
+    {
+      "id": "freeShape_1774412829635",
+      "shapeType": "rectangle",
+      "position": {
+        "x": 118.86188326229893,
+        "y": 565.9324515879845
+      },
+      "width": 80,
+      "height": 77,
+      "fillColor": "#ff0000",
+      "fillOpacity": 0.4,
+      "borderColor": "#ffffff",
+      "borderWidth": 1,
+      "borderStyle": "solid",
+      "rotation": 0,
+      "zIndex": -1
+    },
+    {
+      "id": "freeShape_1774412879733",
+      "shapeType": "rectangle",
+      "position": {
+        "x": 758.2776011779138,
+        "y": 568.1069099458304
+      },
+      "width": 82,
+      "height": 78,
+      "fillColor": "#ff0000",
+      "fillOpacity": 0.4,
+      "borderColor": "#ffffff",
+      "borderWidth": 1,
+      "borderStyle": "solid",
+      "rotation": 0,
+      "zIndex": -1
+    },
+    {
+      "id": "freeShape_1774412966272",
+      "shapeType": "rectangle",
+      "position": {
+        "x": 64.57378532605173,
+        "y": 49.91481891304579
+      },
+      "width": 189,
+      "height": 299,
+      "fillColor": "#ffffff",
+      "fillOpacity": 0,
+      "borderColor": "#2df0ed",
+      "borderWidth": 2,
+      "borderStyle": "dashed",
+      "rotation": 0,
+      "zIndex": -1
+    }
+  ],
+  "trafficRateAnnotations": [],
+  "groupStyleAnnotations": [],
+  "networkNodeAnnotations": [],
+  "nodeAnnotations": [
+    {
+      "id": "srl1",
+      "position": {
+        "x": 340,
+        "y": 380
+      },
+      "icon": "router",
+      "interfacePattern": "e1-{n}"
+    },
+    {
+      "id": "srl2",
+      "position": {
+        "x": 560,
+        "y": 380
+      },
+      "icon": "router",
+      "interfacePattern": "e1-{n}"
+    },
+    {
+      "id": "blue-1",
+      "position": {
+        "x": 140,
+        "y": 100
+      },
+      "icon": "client",
+      "interfacePattern": "eth{n}"
+    },
+    {
+      "id": "red-1",
+      "position": {
+        "x": 140,
+        "y": 240
+      },
+      "icon": "client",
+      "interfacePattern": "eth{n}"
+    },
+    {
+      "id": "blue-3",
+      "position": {
+        "x": 780,
+        "y": 100
+      },
+      "icon": "client",
+      "interfacePattern": "eth{n}"
+    },
+    {
+      "id": "red-3",
+      "position": {
+        "x": 780,
+        "y": 240
+      },
+      "icon": "client",
+      "interfacePattern": "eth{n}"
+    },
+    {
+      "id": "blue-2",
+      "position": {
+        "x": 140,
+        "y": 460
+      },
+      "icon": "client",
+      "interfacePattern": "eth{n}"
+    },
+    {
+      "id": "red-2",
+      "position": {
+        "x": 140,
+        "y": 580
+      },
+      "icon": "client",
+      "interfacePattern": "eth{n}"
+    },
+    {
+      "id": "blue-4",
+      "position": {
+        "x": 780,
+        "y": 460
+      },
+      "icon": "client",
+      "interfacePattern": "eth{n}"
+    },
+    {
+      "id": "red-4",
+      "position": {
+        "x": 780,
+        "y": 580
+      },
+      "icon": "client",
+      "interfacePattern": "eth{n}"
+    }
+  ],
+  "edgeAnnotations": [],
+  "aliasEndpointAnnotations": [],
+  "viewerSettings": {
+    "style": "default",
+    "linkLabelMode": "show-all",
+    "lastNonTelemetryLinkLabelMode": "show-all",
+    "telemetryNodeSizePx": 40,
+    "telemetryInterfaceSizePercent": 100,
+    "gridLineWidth": 0.5,
+    "gridStyle": "dotted",
+    "gridColor": null,
+    "gridBgColor": null
+  }
+}
