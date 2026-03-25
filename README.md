@@ -8,6 +8,7 @@ This lab demonstrates SR Linux microsegmenation capabilities. The lab consists o
 
 In this lab we validate micro-segmentation permit and deny in the following cases:
 
+- Intra-Vlan on the same switch
 - Inter-Vlan on the same switch
 - Intra-Vlan across EVPN
 - Inter-Vlan across EVPN
