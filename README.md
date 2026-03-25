@@ -4,11 +4,21 @@
 ![topology](srl-microseg-irb-lab-topology.png)
 
 ## Lab Description
-This lab demonstrates SR Linux microsegmenation capabilities. The lab consists of two SR Linux switches with EVPN between them. There are eight client devices divided between two stretched vlans within the same IP VRF. The client devices are further micro-segmented into "blue" and "red" groups allowing the user to test micro-segmentation:
+This lab demonstrates SR Linux microsegmenation capabilities. The lab consists of two SR Linux switches with EVPN between them. There are eight client devices divided between two stretched vlans within the same IP VRF. The client devices are further micro-segmented into "blue" and "red" groups allowing the user to test micro-segmentation. The groups are defined through static interface membership and group ID numbers are shared via EVPN using Group Based Policy tags.
+
+In this lab we validate micro-segmentation permit and deny in the following cases:
 
 - Inter-Vlan on the same switch
 - Intra-Vlan across EVPN
 - Inter-Vlan across EVPN
+
+
+**Host Info**
+
+| SR Linux Credentials | |
+|---|---|
+| Username | `admin` |
+| Password | `NokiaSrl1!` |
 
 | Client  | Connected Switch | Bridge Domain | IP Address  |
 | ------- | ---------------- | ------------- | ----------- |
@@ -21,10 +31,10 @@ This lab demonstrates SR Linux microsegmenation capabilities. The lab consists o
 | blue-4  | srl2             | subnet2       | 192.168.2.3 |
 | red-4   | srl2             | subnet2       | 192.168.2.4 |
 
-The groups are defined through static interface membership and group ID numbers are shared via EVPN using Group Based Policy tags.
 
 > [!IMPORTANT]
-> This lab uses the `set / platform resource-management group-based-policy lpm-source-lookup true` feature which when configured requires a reboot to become active. It is important to supply the startup-configs for this lab as full JSON-formatted configurations. This is due to how containerlab applies startup-configs to SR Linux nodes: If the startup-config is supplied in text / command format containerlab applies it as if the commands were entered from the terminal which, the already booted node, would then report it needs rebooted for the changes to take effect creating a situation where the configuration is never applied.
+> Containerlab's automatic copying of SSH keys does not work for this lab. This lab uses the `set / platform resource-management group-based-policy lpm-source-lookup true` feature. This feature must be enabled at device boot time and if enabled after requires a restart to take effect. Due to Containerlab's method of apply text / command-style startup configs as if typed into the terminal of the device, using a partial or complete startup-config in text / command format would never enable this feature as every boot would yield a state requiring a reboot to take effect. In order to boot with the feature fully enabled a full JSON-formatted startup-config is used which is processed as a normal startup-config would. The trade-off is the SSH key copying is not performed with this startup-config method and the user must enter the password to log in.
+
 
 ## Containerlab Deployment
 
@@ -71,7 +81,7 @@ You should only be able to ping between clients in the same group. Blue devices 
 To ping log into the shell of one of the clients:
 
 ``` bash
-docker exec -it blue-1 sh
+docker exec -it blue-1 bash
 ```
 
 ... And attempt to ping another client in the same group:
