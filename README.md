@@ -306,5 +306,92 @@ Received paths     : 1
 <output truncated>
 ```
 
+### ACL Stats
+It is possible view the ACLs and how many times traffic matched the ACL if you have enabled `collect-stats true` under the group-based-policy ACL action:
+
+> [!TIP]
+> Configuration Example to Enable Stats Collection:
+> ```
+> set / network-instance clients-vrf group-based-policy acl entry 10 action collect-stats true
+> ```
+> Stats have been enabled already for all ACLs in this lab
+
+
+View ACLs and stats:
+```
+A:admin@srl1# show acl gbp-filter *
+============================================================================================================================================================================================
+Network Instance: clients-vrf
+Entries         : 3
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Entry 10
+  Match               : protocol=<undefined>, [blue:10](*)->[blue:10](*)
+  Action              : accept
+  Collect Stats       : true
+  Match Packets       : 10
+  Last Match          : 29 seconds ago
+Entry 20
+  Match               : protocol=<undefined>, [red:20](*)->[red:20](*)
+  Action              : accept
+  Collect Stats       : true
+  Match Packets       : 0
+  Last Match          : never
+Entry 99
+  Match               : protocol=<undefined>, [any](*)->[any](*)
+  Action              : drop
+  Collect Stats       : true
+  Match Packets       : 6
+  Last Match          : 9 seconds ago
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+============================================================================================================================================================================================
+Network Instance: subnet1
+Entries         : 3
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Entry 10
+  Match               : protocol=<undefined>, [blue:10](*)->[blue:10](*)
+  Action              : accept
+  Collect Stats       : true
+  Match Packets       : 4
+  Last Match          : 39 seconds ago
+Entry 20
+  Match               : protocol=<undefined>, [red:20](*)->[red:20](*)
+  Action              : accept
+  Collect Stats       : true
+  Match Packets       : 0
+  Last Match          : never
+Entry 99
+  Match               : protocol=<undefined>, [any](*)->[any](*)
+  Action              : drop
+  Collect Stats       : true
+  Match Packets       : 8
+  Last Match          : 19 seconds ago
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+============================================================================================================================================================================================
+Network Instance: subnet2
+Entries         : 3
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Entry 10
+  Match               : protocol=<undefined>, [blue:10](*)->[blue:10](*)
+  Action              : accept
+  Collect Stats       : true
+  Match Packets       : 0
+  Last Match          : never
+Entry 20
+  Match               : protocol=<undefined>, [red:20](*)->[red:20](*)
+  Action              : accept
+  Collect Stats       : true
+  Match Packets       : 0
+  Last Match          : never
+Entry 99
+  Match               : protocol=<undefined>, [any](*)->[any](*)
+  Action              : drop
+  Collect Stats       : true
+  Match Packets       : 0
+  Last Match          : never
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+```
+
+
+
 ## Further
 This is just a basic example of the feature. Refer to the [micro-segmentation documentation](https://documentation.nokia.com/srlinux/26-3/books/vpn-services/micro-segmentation.html) for more information and features.
