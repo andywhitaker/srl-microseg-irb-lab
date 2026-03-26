@@ -34,7 +34,18 @@ In this lab we validate micro-segmentation permit and deny in the following case
 
 
 > [!IMPORTANT]
-> Containerlab's automatic copying of SSH keys does not work for this lab. This lab uses the `set / platform resource-management group-based-policy lpm-source-lookup true` feature. This feature must be enabled at device boot time and if enabled after requires a restart to take effect. Due to Containerlab's method of apply text / command-style startup configs as if typed into the terminal of the device, using a partial or complete startup-config in text / command format would never enable this feature as every boot would yield a state requiring a reboot to take effect. In order to boot with the feature fully enabled a full JSON-formatted startup-config is used which is processed as a normal startup-config would. The trade-off is the SSH key copying is not performed with this startup-config method and the user must enter the password to log in.
+> This lab uses the `platform resource-management group-based-policy lpm-source-lookup true` feature. This feature must be enabled at device boot time, or if enabled on a running device, requires a reboot to take effect. I've designed this lab to properly enable this feature on initial boot believing this is the least-surprising behavior for the user - the lab will just work. The trade-off is Containerlab will not automatically copy your SSH keys to the devices for easy login (you will need to use the `admin/NokiaSrl1!` credentials to log in).
+>
+> To elaborate, Containerlab has two types of startup configs which can be supplied to SR Linux nodes:
+>
+> 1. Text / command style configurations - may be full or partial configs
+> 2. Supplying a full JSON startup config
+> 
+> Text / command style syntax startup-configs are applied by Containerlab as if typed into the terminal of the device. While more readable, unfortunately this would deploy devices which upon initial boot would still require a reboot for the feature to take effect (you would have to do: deploy, destroy, deploy without a clean-up in between). The plus side of this method is Containerlab can insert your SSH-keys when it performs the configuration operation.
+>
+> JSON-formatted full startup configs are processed as a normal startup-config by the node and ensure the feature works upon initial boot but the configuration is supplied as-is by Containerlab with no modifications.
+> 
+> For convenience the relevant configurations in command / text format are provided in the [config_commands](config_commands) folder either to use as reference or to swap as startup-configs if deploy, destroy, deploy with SSH keys is your preference.
 
 
 ## Containerlab Deployment

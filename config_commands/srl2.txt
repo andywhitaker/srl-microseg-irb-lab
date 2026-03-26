@@ -1,0 +1,166 @@
+# Here is the relevant micro-segmentation configuration for srl2
+
+set / interface system0 subinterface 0 ipv4 admin-state enable
+set / interface system0 subinterface 0 ipv4 address 2.2.2.2/32
+
+set / interface ethernet-1/1 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv4 address 10.1.2.2/24
+set / interface ethernet-1/2 admin-state enable
+set / interface ethernet-1/2 subinterface 0 type bridged
+set / interface ethernet-1/3 admin-state enable
+set / interface ethernet-1/3 subinterface 0 type bridged
+set / interface ethernet-1/4 admin-state enable
+set / interface ethernet-1/4 subinterface 0 type bridged
+set / interface ethernet-1/5 admin-state enable
+set / interface ethernet-1/5 subinterface 0 type bridged
+
+set / interface irb0 subinterface 1 ipv4 admin-state enable
+set / interface irb0 subinterface 1 ipv4 address 192.168.1.254/24 anycast-gw true
+set / interface irb0 subinterface 1 ipv4 address 192.168.1.254/24 primary
+set / interface irb0 subinterface 1 ipv4 arp learn-unsolicited true
+set / interface irb0 subinterface 1 ipv4 arp evpn advertise dynamic interface-less-routing bgp-evpn-instance 1
+set / interface irb0 subinterface 1 anycast-gw
+set / interface irb0 subinterface 2 ipv4 admin-state enable
+set / interface irb0 subinterface 2 ipv4 address 192.168.2.254/24 anycast-gw true
+set / interface irb0 subinterface 2 ipv4 address 192.168.2.254/24 primary
+set / interface irb0 subinterface 2 ipv4 arp learn-unsolicited true
+set / interface irb0 subinterface 2 ipv4 arp evpn advertise dynamic interface-less-routing bgp-evpn-instance 1
+set / interface irb0 subinterface 2 anycast-gw
+
+set / tunnel-interface vxlan0 vxlan-interface 1 type bridged
+set / tunnel-interface vxlan0 vxlan-interface 1 ingress vni 1
+set / tunnel-interface vxlan0 vxlan-interface 1 bridge-table
+set / tunnel-interface vxlan0 vxlan-interface 2 type bridged
+set / tunnel-interface vxlan0 vxlan-interface 2 ingress vni 2
+set / tunnel-interface vxlan0 vxlan-interface 2 bridge-table
+set / tunnel-interface vxlan0 vxlan-interface 10 type routed
+set / tunnel-interface vxlan0 vxlan-interface 10 ingress vni 10
+
+set / routing-policy prefix-set system-loopback prefix 2.2.2.2/32 mask-length-range 32..32
+set / routing-policy policy evpn-peer-export-policy default-action policy-result reject
+set / routing-policy policy evpn-peer-export-policy statement 10 match protocol local
+set / routing-policy policy evpn-peer-export-policy statement 10 match prefix prefix-set system-loopback
+set / routing-policy policy evpn-peer-export-policy statement 10 action policy-result accept
+set / routing-policy policy evpn-peer-export-policy statement 20 match protocol bgp
+set / routing-policy policy evpn-peer-export-policy statement 20 action policy-result accept
+set / routing-policy policy evpn-peer-export-policy statement 30 match bgp evpn route-type [ 1 ]
+set / routing-policy policy evpn-peer-export-policy statement 30 action policy-result accept
+set / routing-policy policy evpn-peer-export-policy statement 40 match bgp evpn route-type [ 2 ]
+set / routing-policy policy evpn-peer-export-policy statement 40 action policy-result accept
+set / routing-policy policy evpn-peer-export-policy statement 50 match bgp evpn route-type [ 3 ]
+set / routing-policy policy evpn-peer-export-policy statement 50 action policy-result accept
+set / routing-policy policy evpn-peer-export-policy statement 60 match bgp evpn route-type [ 4 ]
+set / routing-policy policy evpn-peer-export-policy statement 60 action policy-result accept
+set / routing-policy policy evpn-peer-export-policy statement 70 match bgp evpn route-type [ 5 ]
+set / routing-policy policy evpn-peer-export-policy statement 70 action policy-result accept
+set / routing-policy policy evpn-peer-import-policy default-action policy-result reject
+set / routing-policy policy evpn-peer-import-policy statement 10 match protocol bgp
+set / routing-policy policy evpn-peer-import-policy statement 10 action policy-result accept
+set / routing-policy policy evpn-peer-import-policy statement 20 match bgp evpn route-type [ 1 ]
+set / routing-policy policy evpn-peer-import-policy statement 20 action policy-result accept
+set / routing-policy policy evpn-peer-import-policy statement 30 match bgp evpn route-type [ 2 ]
+set / routing-policy policy evpn-peer-import-policy statement 30 action policy-result accept
+set / routing-policy policy evpn-peer-import-policy statement 40 match bgp evpn route-type [ 3 ]
+set / routing-policy policy evpn-peer-import-policy statement 40 action policy-result accept
+set / routing-policy policy evpn-peer-import-policy statement 50 match bgp evpn route-type [ 4 ]
+set / routing-policy policy evpn-peer-import-policy statement 50 action policy-result accept
+set / routing-policy policy evpn-peer-import-policy statement 60 match bgp evpn route-type [ 5 ]
+set / routing-policy policy evpn-peer-import-policy statement 60 action policy-result accept
+
+set / network-instance default interface ethernet-1/1.0
+set / network-instance default interface system0.0
+set / network-instance default protocols bgp admin-state enable
+set / network-instance default protocols bgp autonomous-system 200
+set / network-instance default protocols bgp router-id 2.2.2.2
+set / network-instance default protocols bgp afi-safi evpn admin-state enable
+set / network-instance default protocols bgp afi-safi evpn evpn inter-as-vpn true
+set / network-instance default protocols bgp afi-safi evpn evpn rapid-update true
+set / network-instance default protocols bgp afi-safi ipv4-unicast admin-state enable
+set / network-instance default protocols bgp afi-safi ipv4-unicast evpn rapid-update true
+set / network-instance default protocols bgp route-advertisement rapid-withdrawal true
+set / network-instance default protocols bgp route-advertisement wait-for-fib-install false
+set / network-instance default protocols bgp group evpn-peer peer-as 100
+set / network-instance default protocols bgp group evpn-peer export-policy [ evpn-peer-export-policy ]
+set / network-instance default protocols bgp group evpn-peer import-policy [ evpn-peer-import-policy ]
+set / network-instance default protocols bgp group evpn-peer afi-safi evpn admin-state enable
+set / network-instance default protocols bgp group evpn-peer afi-safi ipv4-unicast admin-state enable
+set / network-instance default protocols bgp neighbor 10.1.2.1 peer-group evpn-peer
+
+set / network-instance subnet1 type mac-vrf
+set / network-instance subnet1 interface ethernet-1/2.0
+set / network-instance subnet1 interface ethernet-1/3.0
+set / network-instance subnet1 interface irb0.1
+set / network-instance subnet1 vxlan-interface vxlan0.1
+set / network-instance subnet1 protocols bgp-evpn bgp-instance 1 vxlan-interface vxlan0.1
+set / network-instance subnet1 protocols bgp-evpn bgp-instance 1 evi 1
+set / network-instance subnet1 protocols bgp-evpn bgp-instance 1 group-based-policy add-community true
+set / network-instance subnet1 protocols bgp-evpn bgp-instance 1 group-based-policy install-from-community true
+set / network-instance subnet1 protocols bgp-vpn bgp-instance 1 route-target export-rt target:1:1
+set / network-instance subnet1 protocols bgp-vpn bgp-instance 1 route-target import-rt target:1:1
+set / network-instance subnet1 group-based-policy group blue tag-value 10
+set / network-instance subnet1 group-based-policy group red tag-value 20
+set / network-instance subnet1 group-based-policy interface ethernet-1/2.0 group [ blue ]
+set / network-instance subnet1 group-based-policy interface ethernet-1/3.0 group [ red ]
+set / network-instance subnet1 group-based-policy acl entry 10 match source-group [ blue ]
+set / network-instance subnet1 group-based-policy acl entry 10 match destination-group [ blue ]
+set / network-instance subnet1 group-based-policy acl entry 10 action collect-stats true
+set / network-instance subnet1 group-based-policy acl entry 10 action accept
+set / network-instance subnet1 group-based-policy acl entry 20 match source-group [ red ]
+set / network-instance subnet1 group-based-policy acl entry 20 match destination-group [ red ]
+set / network-instance subnet1 group-based-policy acl entry 20 action collect-stats true
+set / network-instance subnet1 group-based-policy acl entry 20 action accept
+set / network-instance subnet1 group-based-policy acl entry 99 action collect-stats true
+set / network-instance subnet1 group-based-policy acl entry 99 action drop
+
+set / network-instance subnet2 type mac-vrf
+set / network-instance subnet2 interface ethernet-1/4.0
+set / network-instance subnet2 interface ethernet-1/5.0
+set / network-instance subnet2 interface irb0.2
+set / network-instance subnet2 vxlan-interface vxlan0.2
+set / network-instance subnet2 protocols bgp-evpn bgp-instance 1 vxlan-interface vxlan0.2
+set / network-instance subnet2 protocols bgp-evpn bgp-instance 1 evi 2
+set / network-instance subnet2 protocols bgp-evpn bgp-instance 1 group-based-policy add-community true
+set / network-instance subnet2 protocols bgp-evpn bgp-instance 1 group-based-policy install-from-community true
+set / network-instance subnet2 protocols bgp-vpn bgp-instance 1 route-target export-rt target:2:2
+set / network-instance subnet2 protocols bgp-vpn bgp-instance 1 route-target import-rt target:2:2
+set / network-instance subnet2 group-based-policy group blue tag-value 10
+set / network-instance subnet2 group-based-policy group red tag-value 20
+set / network-instance subnet2 group-based-policy interface ethernet-1/4.0 group [ blue ]
+set / network-instance subnet2 group-based-policy interface ethernet-1/5.0 group [ red ]
+set / network-instance subnet2 group-based-policy acl entry 10 match source-group [ blue ]
+set / network-instance subnet2 group-based-policy acl entry 10 match destination-group [ blue ]
+set / network-instance subnet2 group-based-policy acl entry 10 action collect-stats true
+set / network-instance subnet2 group-based-policy acl entry 10 action accept
+set / network-instance subnet2 group-based-policy acl entry 20 match source-group [ red ]
+set / network-instance subnet2 group-based-policy acl entry 20 match destination-group [ red ]
+set / network-instance subnet2 group-based-policy acl entry 20 action collect-stats true
+set / network-instance subnet2 group-based-policy acl entry 20 action accept
+set / network-instance subnet2 group-based-policy acl entry 99 action collect-stats true
+set / network-instance subnet2 group-based-policy acl entry 99 action drop
+
+set / network-instance clients-vrf type ip-vrf
+set / network-instance clients-vrf interface irb0.1
+set / network-instance clients-vrf interface irb0.2
+set / network-instance clients-vrf vxlan-interface vxlan0.10
+set / network-instance clients-vrf protocols bgp-evpn bgp-instance 1 vxlan-interface vxlan0.10
+set / network-instance clients-vrf protocols bgp-evpn bgp-instance 1 evi 10
+set / network-instance clients-vrf protocols bgp-evpn bgp-instance 1 group-based-policy add-community true
+set / network-instance clients-vrf protocols bgp-evpn bgp-instance 1 group-based-policy install-from-community true
+set / network-instance clients-vrf protocols bgp-vpn bgp-instance 1 route-target export-rt target:10:10
+set / network-instance clients-vrf protocols bgp-vpn bgp-instance 1 route-target import-rt target:10:10
+set / network-instance clients-vrf group-based-policy group blue tag-value 10
+set / network-instance clients-vrf group-based-policy group red tag-value 20
+set / network-instance clients-vrf group-based-policy acl entry 10 match source-group [ blue ]
+set / network-instance clients-vrf group-based-policy acl entry 10 match destination-group [ blue ]
+set / network-instance clients-vrf group-based-policy acl entry 10 action collect-stats true
+set / network-instance clients-vrf group-based-policy acl entry 10 action accept
+set / network-instance clients-vrf group-based-policy acl entry 20 match source-group [ red ]
+set / network-instance clients-vrf group-based-policy acl entry 20 match destination-group [ red ]
+set / network-instance clients-vrf group-based-policy acl entry 20 action collect-stats true
+set / network-instance clients-vrf group-based-policy acl entry 20 action accept
+set / network-instance clients-vrf group-based-policy acl entry 99 action collect-stats true
+set / network-instance clients-vrf group-based-policy acl entry 99 action drop
+
+set / platform resource-management group-based-policy mac-lookup true
+set / platform resource-management group-based-policy lpm-source-lookup true
